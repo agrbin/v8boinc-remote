@@ -1,0 +1,667 @@
+==============
+<submit_batch>
+  --auth-censored--
+  <batch>
+    <app_name>jsapp</app_name>
+    <batch_name>test credentials</batch_name>
+  </batch>
+</submit_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<error>
+    <error_num>-1</error_num>
+    <error_msg>trying to submit empty batch</error_msg>
+</error>
+==============
+
+
+
+==============
+<submit_batch>
+  --auth-censored--
+  <batch>
+    <app_name>jsapp</app_name>
+    <batch_name>batch_u935uk7xk9c1n9e7</batch_name>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_q840nk7xhff0wngx</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>Mg==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_67krfq1wfnh78wb5</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>Mw==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_n41xnh6tna3huf5a</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>NA==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_w6uu3456267g90xs</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>NQ==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_m2k37an603pm4zb9</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>Ng==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_fmgn3apm0836q7zn</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>Nw==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_fbwq5pxum0wn7rqp</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>OA==</source>
+      </input_file>
+    </job>
+    <job>
+      <rsc_fpops_est>1000</rsc_fpops_est>
+      <name>wu_tkp0pg0t44wn9sxc</name>
+      <input_file>
+        <mode>inline</mode>
+        <source>ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeH0=</source>
+      </input_file>
+      <input_file>
+        <mode>inline</mode>
+        <source>OQ==</source>
+      </input_file>
+    </job>
+  </batch>
+</submit_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch_id>423</batch_id>
+==============
+
+
+
+==============
+<query_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</query_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch>
+
+        <id>423</id>
+        <create_time>1408292083</create_time>
+        <expire_time>0</expire_time>
+        <est_completion_time>0</est_completion_time>
+        <njobs>8</njobs>
+        <fraction_done>0</fraction_done>
+        <nerror_jobs>0</nerror_jobs>
+        <state>1</state>
+        <completion_time>0</completion_time>
+        <credit_estimate>1.8518518518519E-8</credit_estimate>
+        <credit_canonical>0</credit_canonical>
+        <name>batch_u935uk7xk9c1n9e7</name>
+        <app_name>jsapp</app_name>
+    <job>
+        <id>25361</id>
+        <name>wu_q840nk7xhff0wngx</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25362</id>
+        <name>wu_67krfq1wfnh78wb5</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25363</id>
+        <name>wu_n41xnh6tna3huf5a</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25364</id>
+        <name>wu_w6uu3456267g90xs</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25365</id>
+        <name>wu_m2k37an603pm4zb9</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25366</id>
+        <name>wu_fmgn3apm0836q7zn</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25367</id>
+        <name>wu_fbwq5pxum0wn7rqp</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25368</id>
+        <name>wu_tkp0pg0t44wn9sxc</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+</batch>
+==============
+
+
+
+==============
+<query_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</query_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch>
+
+        <id>423</id>
+        <create_time>1408292083</create_time>
+        <expire_time>0</expire_time>
+        <est_completion_time>0</est_completion_time>
+        <njobs>8</njobs>
+        <fraction_done>0</fraction_done>
+        <nerror_jobs>0</nerror_jobs>
+        <state>1</state>
+        <completion_time>0</completion_time>
+        <credit_estimate>1.8518518518519E-8</credit_estimate>
+        <credit_canonical>0</credit_canonical>
+        <name>batch_u935uk7xk9c1n9e7</name>
+        <app_name>jsapp</app_name>
+    <job>
+        <id>25361</id>
+        <name>wu_q840nk7xhff0wngx</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25362</id>
+        <name>wu_67krfq1wfnh78wb5</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25363</id>
+        <name>wu_n41xnh6tna3huf5a</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25364</id>
+        <name>wu_w6uu3456267g90xs</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25365</id>
+        <name>wu_m2k37an603pm4zb9</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25366</id>
+        <name>wu_fmgn3apm0836q7zn</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25367</id>
+        <name>wu_fbwq5pxum0wn7rqp</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25368</id>
+        <name>wu_tkp0pg0t44wn9sxc</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+</batch>
+==============
+
+
+
+==============
+<query_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</query_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch>
+
+        <id>423</id>
+        <create_time>1408292083</create_time>
+        <expire_time>0</expire_time>
+        <est_completion_time>0</est_completion_time>
+        <njobs>8</njobs>
+        <fraction_done>0</fraction_done>
+        <nerror_jobs>0</nerror_jobs>
+        <state>1</state>
+        <completion_time>0</completion_time>
+        <credit_estimate>1.8518518518519E-8</credit_estimate>
+        <credit_canonical>0</credit_canonical>
+        <name>batch_u935uk7xk9c1n9e7</name>
+        <app_name>jsapp</app_name>
+    <job>
+        <id>25361</id>
+        <name>wu_q840nk7xhff0wngx</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25362</id>
+        <name>wu_67krfq1wfnh78wb5</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25363</id>
+        <name>wu_n41xnh6tna3huf5a</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25364</id>
+        <name>wu_w6uu3456267g90xs</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25365</id>
+        <name>wu_m2k37an603pm4zb9</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25366</id>
+        <name>wu_fmgn3apm0836q7zn</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25367</id>
+        <name>wu_fbwq5pxum0wn7rqp</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25368</id>
+        <name>wu_tkp0pg0t44wn9sxc</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+</batch>
+==============
+
+
+
+==============
+<query_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</query_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch>
+
+        <id>423</id>
+        <create_time>1408292083</create_time>
+        <expire_time>0</expire_time>
+        <est_completion_time>0</est_completion_time>
+        <njobs>8</njobs>
+        <fraction_done>0.25</fraction_done>
+        <nerror_jobs>0</nerror_jobs>
+        <state>1</state>
+        <completion_time>0</completion_time>
+        <credit_estimate>1.8518518518519E-8</credit_estimate>
+        <credit_canonical>0.10195738624338</credit_canonical>
+        <name>batch_u935uk7xk9c1n9e7</name>
+        <app_name>jsapp</app_name>
+    <job>
+        <id>25361</id>
+        <name>wu_q840nk7xhff0wngx</name>
+        <canonical_instance_id>29025</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25362</id>
+        <name>wu_67krfq1wfnh78wb5</name>
+        <canonical_instance_id>29027</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25363</id>
+        <name>wu_n41xnh6tna3huf5a</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25364</id>
+        <name>wu_w6uu3456267g90xs</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25365</id>
+        <name>wu_m2k37an603pm4zb9</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25366</id>
+        <name>wu_fmgn3apm0836q7zn</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25367</id>
+        <name>wu_fbwq5pxum0wn7rqp</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25368</id>
+        <name>wu_tkp0pg0t44wn9sxc</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+</batch>
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_q840nk7xhff0wngx&file_num=0&--auth-censored--
+--------------
+4
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_67krfq1wfnh78wb5&file_num=0&--auth-censored--
+--------------
+9
+==============
+
+
+
+==============
+<query_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</query_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch>
+
+        <id>423</id>
+        <create_time>1408292083</create_time>
+        <expire_time>0</expire_time>
+        <est_completion_time>0</est_completion_time>
+        <njobs>8</njobs>
+        <fraction_done>0.25</fraction_done>
+        <nerror_jobs>0</nerror_jobs>
+        <state>1</state>
+        <completion_time>0</completion_time>
+        <credit_estimate>1.8518518518519E-8</credit_estimate>
+        <credit_canonical>0.10195738624338</credit_canonical>
+        <name>batch_u935uk7xk9c1n9e7</name>
+        <app_name>jsapp</app_name>
+    <job>
+        <id>25361</id>
+        <name>wu_q840nk7xhff0wngx</name>
+        <canonical_instance_id>29025</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25362</id>
+        <name>wu_67krfq1wfnh78wb5</name>
+        <canonical_instance_id>29027</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25363</id>
+        <name>wu_n41xnh6tna3huf5a</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25364</id>
+        <name>wu_w6uu3456267g90xs</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25365</id>
+        <name>wu_m2k37an603pm4zb9</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25366</id>
+        <name>wu_fmgn3apm0836q7zn</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25367</id>
+        <name>wu_fbwq5pxum0wn7rqp</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25368</id>
+        <name>wu_tkp0pg0t44wn9sxc</name>
+        <canonical_instance_id>0</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+</batch>
+==============
+
+
+
+==============
+<query_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</query_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<batch>
+
+        <id>423</id>
+        <create_time>1408292083</create_time>
+        <expire_time>0</expire_time>
+        <est_completion_time>0</est_completion_time>
+        <njobs>8</njobs>
+        <fraction_done>1</fraction_done>
+        <nerror_jobs>0</nerror_jobs>
+        <state>2</state>
+        <completion_time>1408292144</completion_time>
+        <credit_estimate>1.8518518518519E-8</credit_estimate>
+        <credit_canonical>0.45062778649218</credit_canonical>
+        <name>batch_u935uk7xk9c1n9e7</name>
+        <app_name>jsapp</app_name>
+    <job>
+        <id>25361</id>
+        <name>wu_q840nk7xhff0wngx</name>
+        <canonical_instance_id>29025</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25362</id>
+        <name>wu_67krfq1wfnh78wb5</name>
+        <canonical_instance_id>29027</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25363</id>
+        <name>wu_n41xnh6tna3huf5a</name>
+        <canonical_instance_id>29029</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25364</id>
+        <name>wu_w6uu3456267g90xs</name>
+        <canonical_instance_id>29031</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25365</id>
+        <name>wu_m2k37an603pm4zb9</name>
+        <canonical_instance_id>29033</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25366</id>
+        <name>wu_fmgn3apm0836q7zn</name>
+        <canonical_instance_id>29035</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25367</id>
+        <name>wu_fbwq5pxum0wn7rqp</name>
+        <canonical_instance_id>29037</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+    <job>
+        <id>25368</id>
+        <name>wu_tkp0pg0t44wn9sxc</name>
+        <canonical_instance_id>29039</canonical_instance_id>
+        <n_outfiles>1</n_outfiles>
+        </job>
+</batch>
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_n41xnh6tna3huf5a&file_num=0&--auth-censored--
+--------------
+16
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_w6uu3456267g90xs&file_num=0&--auth-censored--
+--------------
+25
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_m2k37an603pm4zb9&file_num=0&--auth-censored--
+--------------
+36
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_fmgn3apm0836q7zn&file_num=0&--auth-censored--
+--------------
+49
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_fbwq5pxum0wn7rqp&file_num=0&--auth-censored--
+--------------
+64
+==============
+
+
+
+==============
+http://v8boinc.fer.hr/v8boinc//get_output.php?cmd=workunit_file&wu_name=wu_tkp0pg0t44wn9sxc&file_num=0&--auth-censored--
+--------------
+81
+==============
+
+
+
+==============
+<abort_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</abort_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<success>1</success>
+==============
+
+
+
+==============
+<retire_batch>
+  --auth-censored--
+  <batch_id>423</batch_id>
+</retire_batch>
+--------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<success>1</success>
+==============
+
+
+

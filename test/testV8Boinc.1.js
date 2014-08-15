@@ -1,65 +1,43 @@
 var di = require('../lib/DI.js'),
-  V8Boinc = di.get('../V8Boinc.js'),
-  fs = di.get('fs');
+  test = require('./test.js');
 
-fs.truncateSync('test/traffic', 0);
-function sniff(sent, body) {
-  fs.appendFileSync('test/traffic',
-    (sent ? ">>>>>>>>>>" : "<<<<<<<<") + "\n" + body + "\n\n");
-}
+test.mangleRandomToDeterministic(0x0005);
+test.mangleDefaults({
+  max_jobs_in_batch : 100,
+  batch_main_loop_interval : 1
+});
+test.mockRequest('./test/rsrc/mock/testV8Boinc.1.traffic.json');
 
-var v8b = new V8Boinc({
-  project : 'http://v8boinc.fer.hr/v8boinc/',
-  authenticator : 'f25c003c8ca331e2c2a80b109f339269'
-}, sniff);
-
-function main(input) {
-  return input + input + input;
-}
+var V8Boinc = require('./..'),
+  v8b = new V8Boinc(
+    {
+      project : 'http://v8boinc.fer.hr/v8boinc/',
+      authenticator : test.getAuth()
+    },
+    test.getSniffer('./test/rsrc/mock/testV8Boinc.1.traffic')
+  );
 
 v8b.initialize(function (err) {
-  if (err) {
-    return console.log(err);
-  }
+  test.expectFalse(err);
 
   var batch = v8b.newBatch();
 
-  var main_js = {mode:'function', source: main};
-  var main_js2 = {mode:'path', source:'slot/main.js'};
-  var main_js3 = {mode: 'path', source:'slot/main3.js'};
-  var in_json = {mode: 'json', source:44};
-
-  // cudna greska s xml-om kad je unsuported mode.
-  function done(err, result) {
-    console.log(err, result);
+  function addJob(it) {
+    batch.addJob(
+      {function: function main(x) {return x*x}},
+      {json: it},
+      1000, // rsc_est_fpops
+      function (err, result, onProcessed) {
+        test.expectFalse(err);
+        test.expectEq(result, it * it)
+        onProcessed(null);
+      }
+    );
   }
 
-  function cb(err, result, done) {
-    if (err) return console.log("job errd!", err);
-    console.log("job finished! ", result);
-    done(null);
-  }
+  for (var it = 2; it < 10; addJob(it++));
 
-  for (var i = 0; i < 3; ++i) {
-    batch.addJob(main_js, in_json, 1000, cb);
-  }
-
-  batch.submit(function (err, result) {
-    if (err) {
-      return console.log(err);
-    }
-    console.log("submitted " + result + " jobs");
+  batch.submit(function (err) {
+    test.expectFalse(err);
   });
-
-  process.on('SIGINT', function () {
-    batch.abortAll(function (err) {
-      if (err) console.log(err);
-      process.exit(err ? 1 : 0);
-    });
-  });
-
 });
-
-// test sending multiple batches
-//
-// test what happens if you submit return new Date().toString();

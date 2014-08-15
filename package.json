@@ -1,7 +1,8 @@
 {
   "name": "v8boinc-remote",
   "description": "Communicate with v8boinc system",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "main": "./lib/V8Boinc.js",
   "dependencies": {
     "MD5": "^1.2.1",
     "heredoc": "^1.2.0",

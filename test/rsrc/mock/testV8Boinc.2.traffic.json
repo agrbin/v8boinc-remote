@@ -1,0 +1,1 @@
+[{"request":"<submit_batch>\n  --auth-censored--\n  <batch>\n    <app_name>jsapp</app_name>\n    <batch_name>test credentials</batch_name>\n  </batch>\n</submit_batch>\n","response":"something not xml"}]
