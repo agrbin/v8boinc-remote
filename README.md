@@ -1,4 +1,6 @@
-this module should be able the fully communicate with v8boinc server
+v8boinc-remote
+==============
 
-next step is to build http communication. start with
-  checking if user is valid submitter 
+this module should be able the fully communicate with v8boinc server.
+
+module will be used by v8boinc cli program.
