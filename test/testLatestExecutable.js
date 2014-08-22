@@ -10,14 +10,13 @@ var V8Boinc = require('./..'),
     test.getSniffer('tmp')
   );
 
+/*
 v8b.initialize(function (err) {
   test.expectFalse(err);
-
   v8b.getCodeSignPublicKey(function (err, pubkey) {
-
     v8b.getLatestExecutable('i686-pc-linux-gnu', function (err, data) {
       console.log(err,  data );
     });
   });
-
 });
+*/
