@@ -6,8 +6,7 @@ var V8Boinc = require('./..'),
     {
       project : 'http://v8boinc.fer.hr/v8boinc/',
       authenticator : test.getAuth()
-    },
-    test.getSniffer('tmp')
+    }
   );
 
 /*

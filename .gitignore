@@ -1,4 +1,3 @@
 node_modules
 *.swp
-test/traffic
 test/rsrc/authenticator.key
