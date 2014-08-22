@@ -149,6 +149,8 @@ In order to get an authenticator, navigate to V8-BOINC aware server and then:
 * click on your account, then account keys
 * use 32 char string as your authenticator-key
 
+Args and flags.
+
   **SERVER-URL**
       BOINC master url of the V8-BOINC project in use.
 
@@ -258,15 +260,6 @@ active tasks on server. Try not to do this.
 
 ## FLAGS THAT CONTROL OUTPUT
 
-    v8boinc <command>
-            [--help|-h]
-            [--config=<path>|-h <path>]
-            [--minor|-m] [--major|-M] [--hold|-H]
-            [--save|-s] [--suppress|-S] [--limit=<value>|-j <value]
-            [--trace=<path>|-w <path>]
-            [--debug|-d] [--time|-t] [--less|-L] [--log=<path>|-l <path>]
-            [<args>]
-
   **-w <path>, --trace=<path>**
     Write all request/response HTTP pairs into a file for debugging purposes.
     Trace file will not contain authenticator key which is sent over wire.
@@ -287,3 +280,4 @@ active tasks on server. Try not to do this.
 
 * v8boinc-jsapp(1)
 * v8boinc-model(7)
+
