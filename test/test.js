@@ -164,3 +164,6 @@ module.exports.expectEqq = function (x, y) {
     throw "this was expected to be eqq";
   }
 };
+
+module.exports.fail = console.log;
+module.exports.ok = console.log;

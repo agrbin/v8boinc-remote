@@ -37,7 +37,7 @@ v8b.initialize(function (err) {
 
   for (var it = 2; it < 10; addJob(it++));
 
-  batch.submit(function (err) {
+  batch.submit(null, function (err) {
     test.expectFalse(err);
   });
 });

@@ -75,7 +75,7 @@ v8b.initialize(function (err) {
     addOkJob(it++);
   }
 
-  batch.submit(function (err) {
+  batch.submit(null, function (err) {
     test.expectFalse(err);
   });
 });
