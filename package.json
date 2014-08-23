@@ -1,7 +1,7 @@
 {
   "name": "v8boinc-remote",
   "description": "Communication with v8boinc syste",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./lib/V8Boinc.js",
   "bin" : {
     "v8boinc": "bin/v8boinc.js"
