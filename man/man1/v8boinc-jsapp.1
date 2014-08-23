@@ -1,0 +1,101 @@
+.\" Generated with Ronnjs 0.3.8
+.\" http://github.com/kapouer/ronnjs/
+.
+.TH "V8BOINC\-JSAPP" "1" "August 2014" "" ""
+.
+.SH "NAME"
+\fBv8boinc-jsapp\fR \-\- User Manual
+.
+.SH "SYNOPSIS"
+.
+.nf
+jsapp
+.
+.fi
+.
+.SH "DESCRIPTION"
+This binary is not intended to be started manually\. If you\'re still dying to do
+so, read this document first\.
+.
+.P
+Executable takes JavaScript script and JSON encoded input file, executes \fBmain\fR
+function in script with object deserialized from input file and serializes
+returned value to output file\.
+.
+.P
+Executable is compiled to work with BOINC API, like in BOINC client and is
+statically linked against all used libraries including Google\'s V8 to run
+JavaScript\.
+.
+.P
+Normal environment for this binary is BOINC client program\.
+.
+.SH "FILES"
+There are two input files consumed by this executable:
+.
+.IP "\(bu" 4
+main\.js
+.
+.IP "\(bu" 4
+in\.json
+.
+.IP "" 0
+.
+.P
+Output files that may or may not appear in working directory after executable
+finishes are:
+.
+.IP "\(bu" 4
+out\.json
+.
+.IP "\(bu" 4
+stderr\.txt
+.
+.IP "\(bu" 4
+boinc\fIfinish\fRcalled
+.
+.IP "\(bu" 4
+boinc_lockfile
+.
+.IP "" 0
+.
+.P
+\fBmain\.js\fR is an input file that should contain valid JavaScript code with
+function main available in global scope\.
+.
+.P
+\fBin\.json\fR is an input file that should contain valid JSON object\.
+.
+.P
+\fBstderr\.txt\fR, \fBboinc_finish_called\fR and \fBboinc_lockfile\fR are files related to
+BOINC API, and they appear because \fBjsapp\fR is nothing else but native BOINC
+application\.
+.
+.P
+\fBstderr\.txt\fR will contain error messages if something went wrong\.
+.
+.P
+\fBboinc_finish_called\fR is an empty file that will be touched when \fBjsapp\fR exists
+intentionally\.
+.
+.P
+\fBboinc_lockfile\fR is an empty file that will be present when \fBjsapp\fR is running\.
+.
+.SH "COMPILATION"
+We compiled this executable for Windows, Linux and Mac on "normal" processors
+and for Linux running MIPS\.
+.
+.P
+Executable is statically compiled against \fBold libc\fR implementation resulting
+in increased portability over various environments\.
+.
+.P
+Size of executable is not bigger than 10Mb\.
+.
+.SH "EXIT STATUS"
+The exit status is 0 if and only if there were no errors and \fBout\.json\fR was
+written\.
+.
+.SH "KNOWN BUGS"
+There is a timeout in BOINC API that causes \fBjsapp\fR to have ~2 seconds of delay
+when running outside BOINC client\.

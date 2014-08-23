@@ -1,0 +1,356 @@
+.\" Generated with Ronnjs 0.3.8
+.\" http://github.com/kapouer/ronnjs/
+.
+.TH "V8BOINC" "1" "August 2014" "" ""
+.
+.SH "NAME"
+\fBv8boinc\fR \-\- User Manual
+.
+.SH "SYNOPSIS"
+.
+.nf
+v8boinc \-\-help
+v8boinc <command>
+        [\-\-help|\-h]
+        [\-\-config=<path>|\-h <path>]
+        [\-\-minor|\-m] [\-\-major|\-M] [\-\-hold|\-H]
+        [\-\-save|\-s] [\-\-suppress|\-S] [\-\-limit=<value>|\-j <value]
+        [\-\-trace|\-w]
+        [\-\-debug|\-d] [\-\-time|\-t] [\-\-less|\-L] [\-\-log=<path>|\-l <path>]
+        [<args>]
+.
+.fi
+.
+.SH "DESCRIPTION"
+\fBv8boinc\fR is a command line program that lets you develop and deploy parallel
+applications for V8\-BOINC system\.
+.
+.P
+While V8\-BOINC system only supports tasks consisted of one \fB\|\.js\fR file and one
+input \fB\|\.json\fR file, \fBv8boinc\fR program enables writing a modular applications
+using well\-known node module system\.
+.
+.P
+Other than using multiple files to develop application, \fBv8boinc\fR includes
+functionality to unit test the application in exact same environment that is
+used on volunteer hosts\.
+.
+.P
+In this document we use the term \fBapplication\fR to denote scientific
+distributed application that will be deployed on V8\-BOINC system\.
+.
+.SH "COMMANDS AND WORKFLOW"
+Commands are (in order of normal workflow):
+.
+.IP "\(bu" 4
+\fBauthenticate MASTER_URL\fR
+.
+.IP "\(bu" 4
+\fBbenchmark\fR
+.
+.IP "\(bu" 4
+\fBinit APPLICATION\-NAME\fR
+.
+.IP "\(bu" 4
+\fBtest\fR
+.
+.IP "\(bu" 4
+\fBestimate\fR
+.
+.IP "\(bu" 4
+\fBrun\fR
+.
+.IP "" 0
+.
+.P
+Before starting to use \fBv8boinc\fR on a new machine, one needs to \fBauthenticate\fR
+and \fBbenchmark\fR the machine\. Authentication step requires that user has an
+account on a V8\-BOINC server that has submission privileges\. Benchmark will
+estimate speed of current machine in order to later estimate work load of each
+job submitted\.
+.
+.P
+When starting to develop an application for the first time, you need to chdir
+to root of the application (or in an empty dir) and issue \fBv8boinc init\fR\|\.
+This will create hidden \fB\|\.v8boinc\fR dir and \fBapp\.json\fR with some configuration
+parameters\. This command will also download \fBjsapp\fR executable for your
+platform and verifiy its digital signature\. This is a statically compiled
+wrapper around V8 that simply runs the script from working directory\. See \fBv8boinc\-jsapp(1)\fR for more info\.
+.
+.P
+The development cycle is:
+.
+.IP "\(bu" 4
+\fBv8boinc test\fR while all unit tests are good\.
+.
+.IP "\(bu" 4
+\fBv8boinc estimate\fR while workload of one task is good
+.
+.IP "\(bu" 4
+\fBv8boinc run\fR!
+.
+.IP "\(bu" 4
+connect all of your devices to V8\-BOINC and ask your friends to do the same!
+.
+.IP "" 0
+.
+.P
+\fBv8boinc estimate\fR tries to estimate number of floating points operations
+required to finish one task\. This number is then sent to BOINC server which
+will use it to do the job scheduling\.
+.
+.P
+All commands can be shortened to first leter, eg\. \fBv8boinc r\fR is equivalent to \fBv8boinc run\fR\|\. \fBrun\fR command will also repeat \fBtest\fR and \fBestimate\fR commands
+and proceed only if those commands returned no errors\.
+.
+.P
+The rest of the document shows directory structure of an application and
+afterwards, description of each command with flags is presented\.
+.
+.SH "APPLICATION ANATOMY"
+.
+.nf
+\-\- git ignored:
+| \.v8boinc/
+| | bin/
+| | | jsapp
+| | test\-results/
+| | bundles/
+| node_modules/
+\-\- not ignored:
+[package\.json]
+| app\.json
+| main\.js
+| lib/
+| | *\.js
+| input/
+| | *\.in\.json
+| output/
+| | *\.out\.json
+| | *\.error
+| test/
+| | *\.in\.json
+| | *\.out\.json
+.
+.fi
+.
+.P
+This diagram shows directory structure of an application\. Ignored \fB\|\.v8boinc\fR
+directory contains \fBjsapp\fR executable that runs unit tests, bundles that are
+concating whole application code with required modules to one file and unit
+test results from last test run\.
+.
+.P
+\fBmain\.js\fR file must \fBmodule\.exports\fR a function called \fBmain\fR\|\. This is a entry
+point to your application\. This function will be invoked with input object and
+returned value will act as an output object\. If you want to have function \fBmain\fR in some other file change \fBmain\fR field in \fBapp\.json\fR\|\.
+.
+.P
+From your code you can use \fBrequire\fR functionality and require anything that is
+pure JavaScript\. For example, you can\'t \fBrequire("child_process")\fR because we
+can\'t run that from browser\.
+.
+.P
+Folder \fBlib/\fR is used for your libraries just like in ordinary node packages\.
+Use \fBnpm install \-\-save [package\-name]\fR when you want to use some external
+package that will later be installed easily with \fBnpm install\fR when positioned
+in root directory of your app\. 
+.
+.P
+In \fBtest/\fR you should put \fBX\.in\.json\fR and \fBX\.out\.json\fR pairs that are matching
+inputs and outputs from your application\. It is required to have at least one
+test in order to submit jobs to remote server\. Note that these tests will be
+started locally\. There is a bug that causes all tests to take at least 2
+seconds to execute\.
+.
+.P
+\fBinput/\fR directory should contain real tasks that you want to process in
+distributed manner\. These files are in same format as your unit tests\. The only
+difference is that there can be (should be) large number of these tasks and
+they can consume significant processing time to process\. Other than that,
+everything is the same like with unit tests\.
+.
+.P
+\fBoutput/\fR will contain results from running an application distributed, eg\.
+after \fBv8boinc run\fR finishes\. These files will have same base name as input
+counterparts but extension will be \fB\|\.out\.json\fR if everything went well or \fB\|\.error\fR if there was an error while processing a task in the wild\.
+.
+.P
+You may choose to have scripts that will produce all the input files or to git
+ignore output files and to process them to some other location after the
+computatino is finished\. It is expected that number of these files will be
+huge\.
+.
+.SH "v8boinc authenticate SERVER\-URL [AUTHENTICATOR\-KEY]"
+This command will create global config file with authenticator and submission
+server URL\.
+.
+.P
+In order to get an authenticator, navigate to V8\-BOINC aware server and then:
+.
+.IP "\(bu" 4
+log in or create an account (link is in upper right corner)
+.
+.IP "\(bu" 4
+ask submit permissions from server administrator
+.
+.IP "\(bu" 4
+click on your account, then account keys
+.
+.IP "\(bu" 4
+use 32 char string as your authenticator\-key
+.
+.IP "" 0
+.
+.P
+Args and flags\.
+.
+.P
+  \fBSERVER\-URL\fR
+      BOINC master url of the V8\-BOINC project in use\.
+.
+.P
+  \fB[AUTHENTICATOR]\fR
+      Authenticator key for user that is using V8\-BOINC server\. If omitted, key
+      will be prompted through tty like a password\.
+.
+.P
+  \fB\-\-config=PATH\fR default \fB~/\.v8boinc\.conf\fR
+      Makes use of different path for global config file\. If different config
+      file is in use than all future invocations should have that flag active\.
+.
+.SH "v8boinc benchmark"
+Benchmark command will estimate speed of current machine and write it to main
+config file (\fB~/\.v8boinc\.conf\fR)\. This data will later be used to estimate
+load required by submitted jobs\.
+.
+.SH "v8boinc init NAME "
+This command will create \fB\|\.gitignore\fR file, internally used \fB\|\.v8boinc\fR folder
+and minimal \fBapp\.json\fR for your scientific application and download and
+verify binaries used to test the application locally\.
+.
+.P
+While \fB\|\.v8boinc\fR is git ignored, you must call this command each time you
+start working on a freshly cloned app\.
+.
+.P
+  \fBNAME\fR default is basename of current directory
+      Name to write into app\.config\. It is used only to name some internal
+      files and directories\.
+.
+.P
+  \fB\fIDESCRIPTION\fR\fR
+      Describe yourslef what you\'re doing\. It will be written to \fBapp\.json\fR\|\.
+.
+.SH "v8boinc test [TEST\-FILES]"
+Test will bundle up all \fB\|\.js\fR files in your application root directory and
+create bundled \fBmain\.js\fR that contains your whole application\.
+.
+.P
+Code will then be executed against test files from arguments or all tests in \fBtest/\fR if no arguments specified\.
+.
+.P
+All test that didn\'t crashed will have results written to \fB\|\.v8boinc/test\-results/\fR\|\.
+.
+.P
+  \fB[TEST_FILES]\fR
+      Tests to run\. If omitted all tests in \fBtest/\fR directory will be
+      used\.
+.
+.P
+  \fB\-s, \-\-save\fR
+    Without this flag, if there is a \fB\|\.in\.json\fR test file without matching
+    \fB\|\.out\.json\fR file, that test will be marked as failed\.
+    With this flag active, produced output will be written as correct test
+    result and test will pass\.
+.
+.P
+  \fB\-S, \-\-suppress\fR
+    Suppress outputing failed test outputs to a console\. Helps if tests have
+    large input/output files\. All (not crashed) test results are always
+    available in \fB\|\.v8boinc/test\-results/*\.out\.json\fR\|\.
+.
+.P
+  \fB\-j <NUM>, \-\-limit=<NUM>\fR default $(nproc)
+    Run this number of tests in parallel\.
+.
+.P
+  \fB\-H, \-\-hold\fR
+    With every run of tests, build version of your application is increased\.
+    This causes \fB\|\.v8boinc/bundles\fR to pile up with earlier snapshots of your
+    application which can consume a disk space\. This flag causes version to
+    hold still\.
+    Versions are written in \fBapp\.json\fR\|\.
+.
+.P
+  \fB\-m, \-\-minor\fR
+    Bump application minor version\.
+.
+.P
+  \fB\-M, \-\-major\fR
+    Bump application major version\.
+.
+.SH "v8boinc estimate [INPUT\-FILE]"
+This command will create a bundle and run the application on first input file
+in \fBinput/\fR dir or file name in command line argument\. Execution will be
+stopped when \fBboinc_fraction_done\fR is called with argument equal or larger than
+0\.01\.
+.
+.P
+Estimated processing power will be determined based on above running time and
+benchmark results for this machine\.
+.
+.P
+  \fB[INPUT_FILE]\fR
+      You may choose an input file that will be used to estimate work load\. If
+      this argument is omitted, first input file from \fBinput/\fR directory will
+      be used\.
+.
+.SH "v8boinc run"
+Run will firstly invoke \fBv8boinc test && v8boinc estimate\fR with all flags
+passed to run invocation\. If those subcommands return no errors, submition of
+tasks from \fBinput/\fR to remote server will commence\.
+.
+.P
+After all tasks were submitted, process will wait for all results to return
+and write their output to \fBoutput/\fR\|\. If task produced an error, its output
+will have \fB\|\.error\fR extension and contents will have the error details\.
+.
+.P
+If you hit Ctrl+C (or send SIGINT) to this process while there are pending
+results, all submitted jobs will be canceled on server\.
+.
+.P
+If you hit Ctrl+C twice, or kill a process in any other way, you may left
+active tasks on server\. Try not to do this\.
+.
+.SH "FLAGS THAT CONTROL OUTPUT"
+  \fB\-w <path>, \-\-trace=<path>\fR
+    Write all request/response HTTP pairs into a file for debugging purposes\.
+    Trace file will not contain authenticator key which is sent over wire\.
+.
+.P
+  \fB\-d, \-\-debug\fR
+    Print some more debugging info\. They are not much usefull\.
+.
+.P
+  \fB\-t, \-\-time\fR
+    Output timestamp prepended to every line\. Useful for long running jobs\.
+.
+.P
+  \fB\-L, \-\-less\fR
+    Don\'t output \fBINFO\fR lines\.
+.
+.P
+  \fB\-l <path>, \-\-log=<path>\fR
+    Additionally, output everything to a log file\.
+.
+.SH "SEE ALSO"
+.
+.IP "\(bu" 4
+v8boinc\-jsapp(1)
+.
+.IP "\(bu" 4
+v8boinc\-model(7)
+.
+.IP "" 0
