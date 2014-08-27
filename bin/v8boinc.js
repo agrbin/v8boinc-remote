@@ -13,7 +13,7 @@ var fs = require('fs'),
 cli
   .enable('version')
   .setUsage(defaults.mainUsage)
-  .setApp('v8boinc', '0.0.1')
+  .setApp('v8boinc', '0.0.8')
   .parse(
     defaults.commonFlags,
     defaults.commands
@@ -64,7 +64,7 @@ cli.main(function (args, options) {
     } else {
       module.main(app, function (err) {
         if (err) {
-          return cli.fatal(err);
+          return cli.info("WARN: " + err);
         }
         cli.ok("looks like everything went just fine.");
       });

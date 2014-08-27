@@ -1,9 +1,9 @@
 {
   "name": "v8boinc-remote",
   "description": "Develop and deploy distributed application on V8-BOINC",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./lib/V8Boinc.js",
-  "bin" : {
+  "bin": {
     "v8boinc": "bin/v8boinc.js"
   },
   "author": {
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "MD5": "^1.2.1",
+    "always-tail": "^0.1.1",
     "async": "^0.9.0",
     "browserify": "^5.10.0",
     "cli": "~0.6.3",
