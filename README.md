@@ -30,8 +30,8 @@ Other than using multiple files to develop application, `v8boinc` includes
 functionality to unit test the application in exact same environment that is
 used on volunteer hosts.
 
-In this document we use the term **application** to denote scientific
-distributed application that will be deployed on V8-BOINC system.
+In this document we use the term **application** to denote distributed
+application that will be deployed on V8-BOINC system.
 
 ## COMMANDS AND WORKFLOW
 
@@ -60,8 +60,9 @@ wrapper around V8 that simply runs the script from working directory. See
 
 The development cycle is:
 
-* `v8boinc test` while all unit tests are good.
-* `v8boinc estimate` while workload of one task is good
+* `v8boinc test` until unit tests pass
+* `v8boinc estimate` until one unit of work (task from input/) consumes
+                     apropriate amount of processor time.
 * `v8boinc run`!
 * connect all of your devices to V8-BOINC and ask your friends to do the same!
 
@@ -72,9 +73,6 @@ will use it to do the job scheduling.
 All commands can be shortened to first leter, eg. `v8boinc r` is equivalent to
 `v8boinc run`. `run` command will also repeat `test` and `estimate` commands
 and proceed only if those commands returned no errors.
-
-The rest of the document shows directory structure of an application and
-afterwards, description of each command with flags is presented.
 
 ## APPLICATION ANATOMY
 
@@ -175,8 +173,8 @@ load required by submitted jobs.
 ## v8boinc init NAME [DESCRIPTION]
 
 This command will create `.gitignore` file, internally used `.v8boinc` folder
-and minimal `app.json` for your scientific application and download and
-verify binaries used to test the application locally.
+and minimal `app.json` for your application and download and verify binaries
+used to test the application locally.
 
 While `.v8boinc` is git ignored, you must call this command each time you
 start working on a freshly cloned app.
@@ -186,7 +184,7 @@ start working on a freshly cloned app.
       files and directories.
 
   **[DESCRIPTION]**
-      Describe yourslef what you're doing. It will be written to `app.json`.
+      Describe what your application is doing. This will be written to app.json.
 
 ## v8boinc test [TEST-FILES]
 
@@ -220,7 +218,7 @@ All test that didn't crashed will have results written to
   **-H, --hold**
     With every run of tests, build version of your application is increased.
     This causes `.v8boinc/bundles` to pile up with earlier snapshots of your
-    application which can consume a disk space. This flag causes version to
+    application which can consume disk space. This flag causes version to
     hold still.
     Versions are written in `app.json`.
 
