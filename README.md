@@ -260,6 +260,14 @@ results, all submitted jobs will be canceled on server.
 If you hit Ctrl+C twice, or kill a process in any other way, you may left
 active tasks on server. Try not to do this.
 
+  **--publicdir=DIR:URL**
+    If submitting large files, node process could ran out of memory. To avoid
+    this one can instruct v8boinc to take input files over a HTTP location
+    using this flag. DIR is a location where symlink to input file will be
+    created, and URL should point to that exact dir over a HTTP server. This
+    must be visible from central server.
+
+
 ## FLAGS THAT CONTROL OUTPUT
 
   **-w <path>, --trace=<path>**

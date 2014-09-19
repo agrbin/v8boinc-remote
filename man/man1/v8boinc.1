@@ -1,7 +1,7 @@
 .\" Generated with Ronnjs 0.3.8
 .\" http://github.com/kapouer/ronnjs/
 .
-.TH "V8BOINC" "1" "August 2014" "" ""
+.TH "V8BOINC" "1" "September 2014" "" ""
 .
 .SH "NAME"
 \fBv8boinc\fR \-\- User Manual
@@ -40,8 +40,8 @@ functionality to unit test the application in exact same environment that is
 used on volunteer hosts\.
 .
 .P
-In this document we use the term \fBapplication\fR to denote scientific
-distributed application that will be deployed on V8\-BOINC system\.
+In this document we use the term \fBapplication\fR to denote distributed
+application that will be deployed on V8\-BOINC system\.
 .
 .SH "COMMANDS AND WORKFLOW"
 Commands are (in order of normal workflow):
@@ -85,10 +85,11 @@ wrapper around V8 that simply runs the script from working directory\. See \fBv8
 The development cycle is:
 .
 .IP "\(bu" 4
-\fBv8boinc test\fR while all unit tests are good\.
+\fBv8boinc test\fR until unit tests pass
 .
 .IP "\(bu" 4
-\fBv8boinc estimate\fR while workload of one task is good
+\fBv8boinc estimate\fR until one unit of work (task from input/) consumes
+                 apropriate amount of processor time\.
 .
 .IP "\(bu" 4
 \fBv8boinc run\fR!
@@ -106,10 +107,6 @@ will use it to do the job scheduling\.
 .P
 All commands can be shortened to first leter, eg\. \fBv8boinc r\fR is equivalent to \fBv8boinc run\fR\|\. \fBrun\fR command will also repeat \fBtest\fR and \fBestimate\fR commands
 and proceed only if those commands returned no errors\.
-.
-.P
-The rest of the document shows directory structure of an application and
-afterwards, description of each command with flags is presented\.
 .
 .SH "APPLICATION ANATOMY"
 .
@@ -230,8 +227,8 @@ load required by submitted jobs\.
 .
 .SH "v8boinc init NAME "
 This command will create \fB\|\.gitignore\fR file, internally used \fB\|\.v8boinc\fR folder
-and minimal \fBapp\.json\fR for your scientific application and download and
-verify binaries used to test the application locally\.
+and minimal \fBapp\.json\fR for your application and download and verify binaries
+used to test the application locally\.
 .
 .P
 While \fB\|\.v8boinc\fR is git ignored, you must call this command each time you
@@ -244,7 +241,7 @@ start working on a freshly cloned app\.
 .
 .P
   \fB\fIDESCRIPTION\fR\fR
-      Describe yourslef what you\'re doing\. It will be written to \fBapp\.json\fR\|\.
+      Describe what your application is doing\. This will be written to app\.json\.
 .
 .SH "v8boinc test [TEST\-FILES]"
 Test will bundle up all \fB\|\.js\fR files in your application root directory and
@@ -282,7 +279,7 @@ All test that didn\'t crashed will have results written to \fB\|\.v8boinc/test\-
   \fB\-H, \-\-hold\fR
     With every run of tests, build version of your application is increased\.
     This causes \fB\|\.v8boinc/bundles\fR to pile up with earlier snapshots of your
-    application which can consume a disk space\. This flag causes version to
+    application which can consume disk space\. This flag causes version to
     hold still\.
     Versions are written in \fBapp\.json\fR\|\.
 .
@@ -327,6 +324,14 @@ results, all submitted jobs will be canceled on server\.
 .P
 If you hit Ctrl+C twice, or kill a process in any other way, you may left
 active tasks on server\. Try not to do this\.
+.
+.P
+  \fB\-\-publicdir=DIR:URL\fR
+    If submitting large files, node process could ran out of memory\. To avoid
+    this one can instruct v8boinc to take input files over a HTTP location
+    using this flag\. DIR is a location where symlink to input file will be
+    created, and URL should point to that exact dir over a HTTP server\. This
+    must be visible from central server\.
 .
 .SH "FLAGS THAT CONTROL OUTPUT"
   \fB\-w <path>, \-\-trace=<path>\fR
