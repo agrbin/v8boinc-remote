@@ -14,15 +14,15 @@ var inputs = [
 ];
 
 var results = [
-  {mode: 'inline', source : 'YW50b24='},
-  {mode: 'inline', source : 'YW50b24='},
-  {mode: 'inline', source : 'eyJhIjoxLCJiIjoyfQ=='},
-  {mode: 'inline', source : 'ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeCp4O30='},
-  {mode: 'local', source : 'literal'},
-  {mode: 'local_staged', source : 'literal'},
-  {mode: 'semilocal', source : 'literal'},
-  {mode: 'inline', source : 'literal'},
-  {mode: 'remote', source : 'literal'}
+  {mode: 'inline', source : 'YW50b24=', gzipped: false, md5: false},
+  {mode: 'inline', source : 'YW50b24=', gzipped: false, md5: false},
+  {mode: 'inline', source : 'eyJhIjoxLCJiIjoyfQ==', gzipped: false, md5: false},
+  {mode: 'inline', source : 'ZnVuY3Rpb24gbWFpbih4KSB7cmV0dXJuIHgqeCp4O30=', gzipped: false, md5: false},
+  {mode: 'local', source : 'literal', gzipped: false, md5: false},
+  {mode: 'local_staged', source : 'literal', gzipped: false, md5: false},
+  {mode: 'semilocal', source : 'literal', gzipped: false, md5: false},
+  {mode: 'inline', source : 'literal', gzipped: false, md5: false},
+  {mode: 'remote', source : 'literal', gzipped: false, md5: false}
 ];
 
 function eok(it) {
@@ -30,6 +30,7 @@ function eok(it) {
     if (err) {
       return test.fail(err);
     }
+    data = data.toObject();
     if (JSON.stringify(results[it]) !== JSON.stringify(data)) {
       console.log("expected, ", results[it]);
       console.log("got, ", data);
@@ -50,6 +51,7 @@ iff.buildInputFiles(inputs, function (err, result) {
   if (err) {
     return test.fail(err);
   }
+  result = result.map(function (x) {return x.toObject();});
   if (JSON.stringify(result) !== JSON.stringify(results)) {
     return test.fail("buildInputFiles didn't return same result");
   }

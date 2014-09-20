@@ -1,7 +1,7 @@
 var di = require('../lib/DI.js'),
   test = require('./test.js');
 
-test.mangleRandomToDeterministic(0x0005);
+test.mangleRandomToDeterministic(0x0019);
 test.mangleDefaults({
   max_jobs_in_batch : 100,
   batch_main_loop_interval : 1

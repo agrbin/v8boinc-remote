@@ -34,8 +34,16 @@ function getSniffer(filename) {
     return function() {};
   }
 
-  fs.truncateSync(filename, 0);
-  fs.truncateSync(filenameJson, 0);
+  function trunc(filename) {
+    if (fs.existsSync(filename)) {
+      fs.truncateSync(filename, 0);
+    } else {
+      fs.writeSync(filename, "");
+    }
+  }
+
+  trunc(filename);
+  trunc(filenameJson);
 
   function a(body) {
     return (body[body.length - 1] !== '\n') ? body + '\n' : body;
