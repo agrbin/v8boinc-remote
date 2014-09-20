@@ -64,7 +64,7 @@ cli.main(function (args, options) {
     } else {
       module.main(app, function (err) {
         if (err) {
-          return cli.info("WARN: " + err);
+          return cli.info("WARN: " + JSON.stringify(err));
         }
         cli.ok("looks like everything went just fine.");
       });
