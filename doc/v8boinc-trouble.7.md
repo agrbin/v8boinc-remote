@@ -11,4 +11,5 @@ go wrong this is the first thing to try.
 and link `jstest`, `main.js` and `in.json` files in it to run `jstest` and see
 the results manualy.
 
-
+* If there are problems with --publicdir and creating links when input files
+  are identical, try removing all links from --publicdir.
