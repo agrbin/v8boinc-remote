@@ -1,7 +1,7 @@
 {
   "name": "v8boinc-remote",
   "description": "Develop and deploy distributed application on V8-BOINC",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "main": "./lib/V8Boinc.js",
   "bin": {
     "v8boinc": "bin/v8boinc.js"
