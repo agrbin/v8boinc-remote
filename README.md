@@ -247,7 +247,7 @@ benchmark results for this machine.
 ## v8boinc run
 
 Run will firstly invoke `v8boinc test && v8boinc estimate` with all flags
-passed to run invocation. If those subcommands return no errors, submition of
+passed to run invocation. If those subcommands return no errors, submission of
 tasks from `input/` to remote server will commence.
 
 After all tasks were submitted, process will wait for all results to return
@@ -266,6 +266,15 @@ active tasks on server. Try not to do this.
     using this flag. DIR is a location where symlink to input file will be
     created, and URL should point to that exact dir over a HTTP server. This
     must be visible from central server.
+    
+  **-z, --gzipped**
+    If submitting large files, you may choose to gzip all input files in
+    `input/` and then this flag should be used. It will cause `v8boinc` to
+    look for `.in.json.gz` files instead of `.in.json`. Additionally, if you
+    add `.in.json.md5` files along with digest of **uncompressed** inputs,
+    submission process will be further shortened.
+    You may add `"gzipped": true` to your app.json to have this flag always
+    enabled.
 
 
 ## FLAGS THAT CONTROL OUTPUT
