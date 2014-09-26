@@ -309,7 +309,7 @@ benchmark results for this machine\.
 .
 .SH "v8boinc run"
 Run will firstly invoke \fBv8boinc test && v8boinc estimate\fR with all flags
-passed to run invocation\. If those subcommands return no errors, submition of
+passed to run invocation\. If those subcommands return no errors, submission of
 tasks from \fBinput/\fR to remote server will commence\.
 .
 .P
@@ -332,6 +332,16 @@ active tasks on server\. Try not to do this\.
     using this flag\. DIR is a location where symlink to input file will be
     created, and URL should point to that exact dir over a HTTP server\. This
     must be visible from central server\.
+.
+.P
+  \fB\-z, \-\-gzipped\fR
+    If submitting large files, you may choose to gzip all input files in
+    \fBinput/\fR and then this flag should be used\. It will cause \fBv8boinc\fR to
+    look for \fB\|\.in\.json\.gz\fR files instead of \fB\|\.in\.json\fR\|\. Additionally, if you
+    add \fB\|\.in\.json\.md5\fR files along with digest of \fBuncompressed\fR inputs,
+    submission process will be further shortened\.
+    You may add \fB"gzipped": true\fR to your app\.json to have this flag always
+    enabled\.
 .
 .SH "FLAGS THAT CONTROL OUTPUT"
   \fB\-w <path>, \-\-trace=<path>\fR
